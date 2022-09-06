@@ -16,39 +16,22 @@ echo ******************************************************************
 echo:
 echo ******************************************************************
 echo *                                                                *
-echo *                  this version of fastall will                  *
-echo *                                                                *
-echo *                connect to a pre-defined network                *
-echo *           install winget and desired apps via winget           *
-echo *              scan for and install windows updates              *
-echo *           place existing files onto the user desktop           *
-echo *                                                                *
-echo *          this script will auto-start in 30 seconds...          *
+echo *          this script will auto-start in 7 seconds...           *
 echo *                                                                *
 echo ******************************************************************
 
-timeout 30
+timeout 7
 
 call net-connect.bat
 call winget-core.bat
-call winget-apps.bat
+call winget-install.bat
+call place-files.bat
 call win-update.bat
-call place-desktop.bat
-call recent-cleanup.bat
 call create-restore.bat
+call winget-uninstall.bat
+call recent-cleanup.bat
 
 color 2f
-
-RunDLL32 User32.dll,MessageBeep
-timeout 1
-RunDLL32 User32.dll,MessageBeep
-timeout 1
-RunDLL32 User32.dll,MessageBeep
-timeout 1
-RunDLL32 User32.dll,MessageBeep
-timeout 1
-RunDLL32 User32.dll,MessageBeep
-timeout 1
 
 echo:
 echo ******************************************************************
@@ -58,5 +41,9 @@ echo *       remember to restart your computer to finish update       *
 echo *                                                                *
 echo ******************************************************************
 echo:
+
+for /L %%X in (0,1,7) do (
+RunDLL32 User32.dll,MessageBeep
+timeout 1 > nul 2> nul )
 
 pause

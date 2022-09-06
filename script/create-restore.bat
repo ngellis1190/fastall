@@ -1,12 +1,13 @@
 @echo off
+pushd "%~dp0"
 
 echo:
-echo Creating a restore point...
-echo:
+echo Enabling system protection and creating a restore point...
 
-wmic.exe /Namespace:\\root\default Path SystemRestore Call CreateRestorePoint "Fresh Install Point", 100, 7
+powershell -command "Enable-ComputerRestore -Drive 'C:\'"
+powershell -command "Checkpoint-Computer -Description 'Known Good - Post Installation' -RestorePointType MODIFY_SETTINGS"
 
 echo:
-echo A system restore point has been created.
+echo A restore point has been created or a recent one had already been available.
 
 timeout 3
