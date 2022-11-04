@@ -13,7 +13,7 @@ echo ******************************************************************
 
 setlocal enabledelayedexpansion
 
-set "localVersion=v1.2.0"
+set "localVersion=v1.2.1"
 for /f "tokens=*" %%a in ('powershell -command "([System.Net.HttpWebRequest]::Create('https://github.com/ngellis1190/fastall/releases/latest').GetResponse().ResponseUri.Segments[5])"') do set netVersion=%%a
 
 set startUpdate=N
