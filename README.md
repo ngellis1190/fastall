@@ -12,21 +12,24 @@
 ## Features
 
 - Automatically connect to a predefined wireless network
-  - **NEW!** Reattempt to connect if a system is initially slow to connect
-  - **NEW!** Alert the operator if an internet connection cannot be made
+  - Reattempt to connect if a system is initially slow to connect
+  - Alert the operator if an internet connection cannot be made
 - Prompt system to scan for and install Windows updates
-  - **NEW!** Provide detailed installation status and name information
-  - **NEW!** Alert the operator should a restart be required
+  - Provide detailed installation status and name information
+  - Alert the operator should a restart be required
 - Install the WinGet package manager and dependencies
+  - **NEW!** The latest version of WinGet is now dynamically installed
+  - **NEW!** No dependencies onboard - all are fetched from the internet
 - Install desired applications via WinGet silently
-  - **NEW!** Provide the option to uninstall packages via WInGet interactively
-  - **NEW!** Manage installs/uninstalls via simple line-separated ini files
-- **NEW!** Copy designated files into any default user directories
+  - Provide the option to uninstall packages via WinGet interactively
+  - Manage installs/uninstalls via simple line-separated ini files
+- Copy designated files into any default user directories
 - Create a system restore point after completion
-  - **NEW!** Enable system protection prior to creation if disabled
-  - **NEW!** Alert the operator should an issue arise during generation
+  - Enable system protection prior to creation if disabled
+  - Alert the operator should an issue arise during generation
 - Alert user with audio when script has finished
-- **NEW!** Run fastall core scripts individually as needed
+- Run fastall core scripts individually as needed
+- Automatically self-update itself as needed (beta)
 
 ## Roadmap
 
@@ -67,17 +70,15 @@ Below is an overview of the directories required to run this utility.
 
 | Directory | Usage  |
 | :-------- | :----- |
-| binary    | Packages that cannot be fetched online for install       |
+| backup    | Where the previous fastall version is stored if updated  |
 | config    | Files to be configured before running for the first time |
 | place     | Items to be copied to user directories (not installers)  |
 | script    | Collection of scripts required for program to run        |
+| staging   | Online packages to be installed are staged here          |
 
 *The baseline folder directory within place should not be altered*
 
 ## Appendix
-
-**Q: Why is there a shortcut called chrome?**
-A: For some reason, the Google Chrome package that is fetched by WinGet often does not match the expected hash. This means that WinGet must be told to force the installation, which cannot be done in the default script as it runs in an elevated mode. Should Chrome fail to install, simply run the shortcut **chrome** in standard, non-administrative mode to force override the hash verification and proceed to installation. Note this has security implications and you should be ready to take on any risks skipping the hash check should entail.
 
 **Q: This utility deleted everything, burned down my house, and lied to me about cake! How are you going to fix this, you terrible person?**
 A: You should restore from that backup you totally have and file an insurance claim as this software is provided “as is”, without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose and noninfringement. In no event shall the authors or copyright holders be liable for any claim, damages or other liability, whether in an action of contract, tort or otherwise, arising from, out of or in connection with the software or the use or other dealings in the software.

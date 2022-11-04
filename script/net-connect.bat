@@ -42,7 +42,7 @@ echo *************************************************************************
 color 4f
 for /L %%X in (0,1,7) do (
 RunDLL32 User32.dll,MessageBeep
-timeout 1 > nul 2> nul )
+timeout 2 > nul 2> nul )
 echo:
 pause
 exit

@@ -23,6 +23,7 @@ echo ******************************************************************
 timeout 7
 
 call net-connect.bat
+call fastall-update.bat
 call winget-core.bat
 call winget-install.bat
 call place-files.bat
@@ -44,6 +45,6 @@ echo:
 
 for /L %%X in (0,1,7) do (
 RunDLL32 User32.dll,MessageBeep
-timeout 1 > nul 2> nul )
+timeout 2 > nul 2> nul )
 
 pause
